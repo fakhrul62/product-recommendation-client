@@ -29,7 +29,7 @@ const Header = () => {
       });
   };
   return (
-    <div className="shadow-lg">
+    <div className="shadow-sm bg-zinc-800">
       <div className="navbar w-10/12 mx-auto justify-between">
         <div className="navbar-start">
           <div className="dropdown">
@@ -51,15 +51,15 @@ const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 *:text-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               {li}
             </ul>
           </div>
-          <Link className=" text-xl flex items-center gap-2 font-bold"><img src={logo} className="animate-spin-slow" alt="Product Recommendation System" /><span>PRS</span></Link>
+          <Link className=" text-xl flex items-center gap-2 font-bold"><img src={logo} className="animate-spin-slow" alt="Product Recommendation System" /><span className="text-white">PRS</span></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-5">{li}</ul>
+          <ul className="menu menu-horizontal px-1 gap-5 *:text-white">{li}</ul>
           <div className="ml-5">
             {user ? (
               <div className="flex gap-3 items-center">
@@ -68,7 +68,7 @@ const Header = () => {
                   data-tip={user.displayName}
                 >
                   <img
-                    className="h-10 object-contain rounded-lg"
+                    className="h-11 object-contain rounded border-2 border-white"
                     src={
                       user?.photoURL !== "" ? user?.photoURL : user?.photoURL
                     }
@@ -77,7 +77,7 @@ const Header = () => {
                 <Link>
                   <button
                     onClick={handleLogOut}
-                    className="bg-transparent border-2 border-fireb px-5 py-2 text-fireb font-body font-semibold rounded"
+                    className="bg-transparent text-white border-2 border-white px-5 py-2 font-body font-semibold rounded"
                     type="button"
                   >
                     Logout
@@ -91,7 +91,7 @@ const Header = () => {
                 </div>
                 <Link to="/login">
                   <button
-                    className="bg-transparent border-2 border-mongo px-5 py-2 text-mongo font-body font-semibold rounded"
+                    className="bg-transparent border-2 px-5 py-2 text-white font-body font-semibold rounded"
                     type="button"
                   >
                     Sign In
