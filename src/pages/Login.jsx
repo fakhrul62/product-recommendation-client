@@ -12,25 +12,8 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     signInUser(email, password)
-      .then((result) => {
-        //console.log(result.user);
-        //navigate after login
+      .then(() => {
         navigate(location?.state ? location.state : "/");
-        //update last login time
-        // const lastSignInTime = result?.user?.metadata?.lastSignInTime;
-        // const loginInfo = { email, lastSignInTime };
-        // fetch(`http://localhost:5000/user`, {
-        //   method: "PATCH",
-        //   headers: {
-        //     "content-type": "application/json",
-        //   },
-        //   body: JSON.stringify(loginInfo),
-        // })
-        //   .then((res) => res.json())
-        //   .then((data) => {
-        //     console.log("sign in info updated", data);
-        //     form.reset();
-        //   });
       })
       .catch((error) => {
         console.log(error.message);

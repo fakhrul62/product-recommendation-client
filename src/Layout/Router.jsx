@@ -10,6 +10,7 @@ import RecommendForMe from "../pages/RecommendForMe";
 import MyQueries from "../pages/MyQueries";
 import MyRecommend from "../pages/MyRecommend";
 import AddQuery from "../pages/AddQuery";
+import QueryDetails from "../pages/QueryDetails";
 
 const Router = createBrowserRouter([
   {
@@ -56,7 +57,12 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/query-details/:id",
+        element: <QueryDetails></QueryDetails>,
+        loader: ({params})=> fetch(`http://localhost:5000/query/${params.id}`)
 
+      },
       {
         path: "/login",
         element: <Login></Login>,

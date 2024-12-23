@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink,useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import logo from "../assets/react.svg";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
   const li = (
     <>
       <NavLink to="/">Home</NavLink>
@@ -22,6 +24,7 @@ const Header = () => {
     logOut()
       .then(() => {
         console.log("user logged out");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         const errorCode = error.message;

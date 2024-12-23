@@ -12,8 +12,8 @@ const AddQuery = () => {
     const productImageUrl = form.productImageUrl.value;
     const queryTitle = form.queryTitle.value;
     const reasonDetails = form.reasonDetails.value;
-    const date = new Date().toLocaleDateString();
-    const time = new Date().toLocaleTimeString();
+    const now = new Date();
+    const dateTime = now.toLocaleString();
 
     const newQuery = {
       productName,
@@ -23,7 +23,8 @@ const AddQuery = () => {
       reasonDetails,
       user_name: user.displayName,
       user_email: user.email,
-      date: {date, time},
+      user_image: user.photoURL,
+      dateTime,
       recommendationCount: 0,
     };
 
