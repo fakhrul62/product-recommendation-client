@@ -7,6 +7,7 @@ import QueryCard from "../components/QueryCard";
 
 const Home = () => {
   const queries = useLoaderData();
+  const [queryCollection, setQueryCollection] = useState(queries);
   return (
     <div>
       <Banner></Banner>
@@ -17,8 +18,8 @@ const Home = () => {
         </h2>
         <div className="grid grid-cols-2 gap-5">
           {
-            queries.map((query) => (
-              <QueryCard key={query._id} query={query} />
+            queryCollection.map((query) => (
+              <QueryCard key={query._id} query={query} queryCollection={queryCollection} setQueryCollection={setQueryCollection}/>
             ))
           }
         </div>

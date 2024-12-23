@@ -53,10 +53,14 @@ const MyQueries = () => {
       <div className="w-10/12 mx-auto my-10">
         <div>
         <div className="grid grid-cols-2 gap-5">
-          {
+          { queries.length>0 ? (
             queries.map((query) => (
               <QueryCard key={query._id} query={query} />
-            ))
+              
+            )))
+            : (
+              <p className="text-center text-2xl text-black">No queries found</p>
+            )
           }
         </div>
         </div>

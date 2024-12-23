@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const QueryCard = ({ query }) => {
+const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
   const location = useLocation();
   const myQueryRoute = "/my-queries";
   const queriesRoute = "/queries";
@@ -18,6 +19,38 @@ const QueryCard = ({ query }) => {
     dateTime,
     recommendationCount,
   } = query;
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#848489",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/queries/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Query has been deleted.",
+                icon: "success",
+              });
+              const remaining = queryCollection?.filter(
+                (que) => que._id !== id
+              );
+              setQueryCollection(remaining);
+            }
+          });
+      }
+    });
+  };
   return (
     <div className="border border-gray-200 p-5 rounded-md grid grid-cols-4 gap-5">
       <div className="flex col-span-1">
@@ -47,7 +80,7 @@ const QueryCard = ({ query }) => {
             </button>
           </Link>
           <Link>
-            <button type="button" className="btn">
+            <button onClick={()=>handleDelete(_id)} type="button" className="btn">
               Delete
             </button>
           </Link>
@@ -60,10 +93,9 @@ const QueryCard = ({ query }) => {
               Recommend
             </button>
           </Link>
-            <button type="button" className="btn">
-              {recommendationCount} Recommendations
-            </button>
-
+          <button type="button" className="btn">
+            {recommendationCount} Recommendations
+          </button>
         </div>
       )}
     </div>
