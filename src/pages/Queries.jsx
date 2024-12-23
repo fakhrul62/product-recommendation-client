@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
-import shape1 from "../../public/shape-1.json";
-import shape2 from "../../public/shape-2.json";
-import shape3 from "../../public/shape-3.json";
+import shape1 from "../assets/shape-1.json";
+import shape2 from "../assets/shape-2.json";
+import shape3 from "../assets/shape-3.json";
 import QueryCard from "../components/QueryCard";
 
 const Queries = () => {

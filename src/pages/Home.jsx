@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Banner from "../components/Banner";
 import Lottie from "lottie-react";
-import thumb from "../../public/thumb.json";
+import thumb from "../assets/thumb.json";
 import { useLoaderData } from "react-router-dom";
 import QueryCard from "../components/QueryCard";
 

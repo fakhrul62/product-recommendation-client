@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { IoBookOutline } from "react-icons/io5";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import RecommendationCard from "../components/RecommendationCard";
 
 const QueryDetails = () => {
   const query = useLoaderData();
-
+  const [queryRecommendations, setQueryRecommendations] = useState([]);
   const {
     _id,
     productName,
@@ -80,9 +81,20 @@ const QueryDetails = () => {
             );
         }
       });
+    
+    
 
     // form.reset();
   };
+
+  useEffect(()=>{
+    fetch("http://localhost:5000/recommendations")
+    .then((res) => res.json())
+    .then((data) => {
+      const resultData = data.filter(results=>results.query_id === _id);
+      setQueryRecommendations(resultData);
+    })
+  }, [])
 
   return (
     <div className="w-10/12 mx-auto my-5 grid grid-cols-2 gap-10">
@@ -221,6 +233,14 @@ const QueryDetails = () => {
         <h2 className="font-bold text-center text-2xl mb-5">
           All Recommendations for this Query
         </h2>
+        <div className="my-10 grid grid-cols-2 gap-5 w-10/12 mx-auto">
+        { queryRecommendations.length > 0 ? (
+            queryRecommendations.map(recommendation=><RecommendationCard key={recommendation._id} recommendation={recommendation} recommendations={queryRecommendations} setRecommendations={setQueryRecommendations}></RecommendationCard>)) :
+            (
+              <p className="text-center text-2xl text-black col-span-2">No Recommendations for this query yet</p>
+            )
+        }
+      </div>
       </div>
     </div>
   );
