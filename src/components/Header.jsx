@@ -36,7 +36,7 @@ const Header = () => {
       <div className="navbar w-10/12 mx-auto justify-between">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -54,9 +54,49 @@ const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 *:text-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 *:text-black rounded-box mt-3 w-52 shadow p-5 gap-3 relative z-20"
             >
               {li}
+              <div>
+              {user ? (
+              <div className="flex gap-3 items-center">
+                <div
+                  className="tooltip tooltip-bottom"
+                  data-tip={user.displayName}
+                >
+                  <img
+                    className="h-11 object-contain rounded border-2 border-white"
+                    src={
+                      user?.photoURL !== "" ? user?.photoURL : user?.photoURL
+                    }
+                  />
+                </div>
+                <Link>
+                  <button
+                    onClick={handleLogOut}
+                    className="bg-transparent text-black border-2 border-black px-5 py-2 font-body font-semibold rounded"
+                    type="button"
+                  >
+                    Logout
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div className="flex gap-3 items-center">
+                <div className="tooltip tooltip-bottom">
+                  <img className="h-10 object-contain rounded-lg" src="" />
+                </div>
+                <Link to="/login">
+                  <button
+                    className="bg-transparent border-2 px-5 py-2 text-black font-body font-semibold rounded"
+                    type="button"
+                  >
+                    Sign In
+                  </button>
+                </Link>
+              </div>
+            )}
+              </div>
             </ul>
           </div>
           <Link className=" text-xl flex items-center gap-2 font-bold"><img src={logo} className="animate-spin-slow" alt="Product Recommendation System" /><span className="text-white">PRS</span></Link>

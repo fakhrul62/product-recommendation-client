@@ -11,11 +11,13 @@ import MyQueries from "../pages/MyQueries";
 import MyRecommend from "../pages/MyRecommend";
 import AddQuery from "../pages/AddQuery";
 import QueryDetails from "../pages/QueryDetails";
+import Error from "../pages/Error";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
