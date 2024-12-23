@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { IoBookOutline } from "react-icons/io5";
 import { AuthContext } from "../Provider/AuthProvider";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const QueryDetails = () => {
   const query = useLoaderData();
@@ -41,6 +41,7 @@ const QueryDetails = () => {
       current_user_name: user.displayName,
       current_user_email: user.email,
       dateTime,
+      query_id: _id,
     };
     // Send data to the server
     fetch("http://localhost:5000/recommendations", {
@@ -70,7 +71,7 @@ const QueryDetails = () => {
                 Swal.fire({
                   title: "Awesome!",
                   text: "You recommended this Product!",
-                  icon: "success"
+                  icon: "success",
                 });
               }
             })
@@ -85,11 +86,11 @@ const QueryDetails = () => {
 
   return (
     <div className="w-10/12 mx-auto my-5 grid grid-cols-2 gap-10">
-      <div className=" p-10 rounded-xl">
+      <div className="p-10 rounded-xl">
         <img
           src={productImageUrl}
           alt={productName}
-          className="rounded-lg w-1/2 mx-auto shadow drop-shadow-[15px_15px_10px_rgba(0,0,0,0.25)]"
+          className="rounded-lg h-96 object-contain mx-auto shadow drop-shadow-[15px_15px_10px_rgba(0,0,0,0.25)]"
         />
       </div>
       <div className="flex flex-col justify-center">
@@ -215,6 +216,11 @@ const QueryDetails = () => {
             </button>
           </div>
         </form>
+      </div>
+      <div className="col-span-2 mt-10">
+        <h2 className="font-bold text-center text-2xl mb-5">
+          All Recommendations for this Query
+        </h2>
       </div>
     </div>
   );

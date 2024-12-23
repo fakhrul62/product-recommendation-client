@@ -56,7 +56,9 @@ const AuthProvider = ({ children }) => {
     googleSignIn,
   };
   return (
-    <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={userInfo}>
+      {loading ? <span className="loading loading-infinity loading-lg"></span> : children}
+    </AuthContext.Provider>
   );
 };
 
