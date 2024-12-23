@@ -22,6 +22,7 @@ const Router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("http://localhost:5000/queries-home"),
       },
       {
         path: "/queries",
@@ -62,7 +63,7 @@ const Router = createBrowserRouter([
       {
         path: "/query-details/:id",
         element: <QueryDetails></QueryDetails>,
-        loader: ({params})=> fetch(`http://localhost:5000/query/${params.id}`)
+        loader: ({params})=> fetch(`http://localhost:5000/queries/${params.id}`)
 
       },
       {

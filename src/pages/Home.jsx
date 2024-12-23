@@ -2,16 +2,26 @@ import React from "react";
 import Banner from "../components/Banner";
 import Lottie from "lottie-react";
 import thumb from "../../public/thumb.json";
+import { useLoaderData } from "react-router-dom";
+import QueryCard from "../components/QueryCard";
 
 const Home = () => {
+  const queries = useLoaderData();
   return (
     <div>
       <Banner></Banner>
       {/* Recently added queries */}
       <div className="my-20 w-10/12 mx-auto">
-        <h2 className="text-center font-semibold text-3xl text-zinc-950">
+        <h2 className="text-center font-semibold text-3xl text-zinc-950 mb-20">
           Recently Added Queries
         </h2>
+        <div className="grid grid-cols-2 gap-5">
+          {
+            queries.map((query) => (
+              <QueryCard key={query._id} query={query} />
+            ))
+          }
+        </div>
       </div>
       {/* what we do */}
       <div className="w-8/12 mx-auto my-20 bg-orange-200 border border-orange-300 rounded-3xl p-10 grid grid-cols-3 gap-5">
