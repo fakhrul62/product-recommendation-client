@@ -5,6 +5,7 @@ import shape1 from "../../public/shape-1.json";
 import shape2 from "../../public/shape-2.json";
 import shape3 from "../../public/shape-3.json";
 import { AuthContext } from "../Provider/AuthProvider";
+import RecommendationCard from "../components/RecommendationCard";
 
 const MyRecommend = () => {
   const { user } = useContext(AuthContext);
@@ -32,8 +33,10 @@ const MyRecommend = () => {
           <Lottie animationData={shape3} loop={true} />
         </div>
       </div>
-      <div>
-
+      <div className="my-10 grid grid-cols-2 gap-5 w-10/12 mx-auto">
+        {
+            recommendations.map(recommendation=><RecommendationCard key={recommendation._id} recommendation={recommendation}></RecommendationCard>)
+        }
       </div>
     </div>
   );
