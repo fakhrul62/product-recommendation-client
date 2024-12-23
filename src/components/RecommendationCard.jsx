@@ -4,6 +4,8 @@ import Swal from "sweetalert2";
 
 const RecommendationCard = ({recommendation, recommendations, setRecommendations}) => {
     const {_id, dateTime,query_creator_email,query_creator_name,queryTitle,recommendationReason,recommendedProductImageUrl,recommendedProductName,recommendationTitle} = recommendation;
+    const location = useLocation();
+      const myRecommendations = "/my-recommendations";
     const handleDelete = (id) => {
         Swal.fire({
           title: "Are you sure?",
@@ -20,7 +22,6 @@ const RecommendationCard = ({recommendation, recommendations, setRecommendations
             })
               .then((res) => res.json())
               .then((data) => {
-                console.log(data);
                 if (data.deletedCount > 0) {
                   Swal.fire({
                     title: "Deleted!",
@@ -48,7 +49,8 @@ const RecommendationCard = ({recommendation, recommendations, setRecommendations
             <div>
                 <img src={recommendedProductImageUrl} className='w-60 object-contain'/>
             </div>
-            <button onClick={()=>handleDelete(_id)} type="button" className='btn bg-zinc-900 border border-zinc-900 text-white hover:bg-red-300 hover:border-red-600 hover:text-red-700'>Delete</button>
+            {location.pathname === myRecommendations && (
+            <button onClick={()=>handleDelete(_id)} type="button" className='btn bg-zinc-900 border border-zinc-900 text-white hover:bg-red-300 hover:border-red-600 hover:text-red-700'>Delete</button>)}
         </div>
     );
 };
