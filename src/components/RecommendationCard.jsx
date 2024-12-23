@@ -1,7 +1,41 @@
 import React from 'react';
+import { Link, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const RecommendationCard = ({recommendation}) => {
-    const {dateTime,query_creator_email,query_creator_name,queryTitle,recommendationReason,recommendedProductImageUrl,recommendedProductName,recommendationTitle} = recommendation;
+const RecommendationCard = ({recommendation, recommendations, setRecommendations}) => {
+    const {_id, dateTime,query_creator_email,query_creator_name,queryTitle,recommendationReason,recommendedProductImageUrl,recommendedProductName,recommendationTitle} = recommendation;
+    const handleDelete = (id) => {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#848489",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetch(`http://localhost:5000/recommendations/${id}`, {
+              method: "DELETE",
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                  Swal.fire({
+                    title: "Deleted!",
+                    text: "Your Recommendation has been deleted.",
+                    icon: "success",
+                  });
+                  const remaining = recommendations?.filter(
+                    (que) => que._id !== id
+                  );
+                  setRecommendations(remaining);
+                }
+              });
+          }
+        });
+      };
     return (
         <div className='p-5 border border-gray-200 rounded-md grid grid-cols-5 gap-3'>
             <div className='col-span-4'>
@@ -14,7 +48,7 @@ const RecommendationCard = ({recommendation}) => {
             <div>
                 <img src={recommendedProductImageUrl} className='w-60 object-contain'/>
             </div>
-            <button type="button" className='btn bg-zinc-900 border border-zinc-900 text-white hover:bg-red-300 hover:border-red-600 hover:text-red-700'>Delete</button>
+            <button onClick={()=>handleDelete(_id)} type="button" className='btn bg-zinc-900 border border-zinc-900 text-white hover:bg-red-300 hover:border-red-600 hover:text-red-700'>Delete</button>
         </div>
     );
 };

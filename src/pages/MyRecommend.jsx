@@ -35,7 +35,7 @@ const MyRecommend = () => {
       </div>
       <div className="my-10 grid grid-cols-2 gap-5 w-10/12 mx-auto">
         {
-            recommendations.map(recommendation=><RecommendationCard key={recommendation._id} recommendation={recommendation}></RecommendationCard>)
+            recommendations.map(recommendation=><RecommendationCard key={recommendation._id} recommendation={recommendation} recommendations={recommendations} setRecommendations={setRecommendations}></RecommendationCard>)
         }
       </div>
     </div>
