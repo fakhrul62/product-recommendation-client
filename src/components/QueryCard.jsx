@@ -83,7 +83,7 @@ const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
               View Details
             </button>
           </Link>
-          <Link to="/query-update">
+          <Link to={`/update-query/${_id}`}>
             <button type="button" className="btn">
               Update
             </button>
