@@ -9,7 +9,6 @@ import {
 } from "firebase/auth";
 import auth from "../utilities/firebase.config";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();

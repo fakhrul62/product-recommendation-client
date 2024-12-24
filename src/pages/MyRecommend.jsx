@@ -24,7 +24,7 @@ const MyRecommend = () => {
         <div className="relative z-10">
           <h2 className="font-bold text-4xl text-zinc-900 text-center">
             All the Recommendations you made: {recommendations.length}
-          </h2>
+          </h2> 
         </div>
         <div className="w-60 absolute -left-10 z-0">
           <Lottie animationData={shape1} loop={true} />

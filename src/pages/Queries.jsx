@@ -25,6 +25,15 @@ const Queries = () => {
           <p className="text-center mt-3">
             Keep track of all the queries you have made. You can add your queries and see the responses you have received.
           </p>
+          <div className="text-center mt-8">
+            <input
+              type="text"
+              placeholder="Search queries..."
+              // value={searchTerm}
+              // onChange={(e) => setSearchTerm(e.target.value)}
+              className="px-4 py-2 border rounded w-1/2"
+            />
+          </div>
           <div className="text-center mt-8 gap-5 flex justify-center">
             <Link to="/add-query">
               <button
