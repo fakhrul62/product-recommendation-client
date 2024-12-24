@@ -10,19 +10,22 @@ const Queries = () => {
   const [queries, setQueries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredQueries, setFilteredQueries] = useState([]);
+  const [grid, setGrid] = useState(2);
   useEffect(() => {
     fetch(`http://localhost:5000/queries`)
       .then((res) => res.json())
       .then((data) => {
         setQueries(data);
         setFilteredQueries(data);
-      })
+      });
   }, []);
   // Update filtered queries when searchTerm changes
   useEffect(() => {
     setFilteredQueries(
       queries.filter((query) =>
-        (query.queryTitle || "").toLowerCase().includes(searchTerm.toLowerCase())
+        (query.queryTitle || "")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
       )
     );
   }, [searchTerm, queries]);
@@ -56,6 +59,14 @@ const Queries = () => {
               </button>
             </Link>
           </div>
+          <div className="flex gap-5 justify-center items-center mt-5">
+            <h3>Change the Grid</h3>
+            <div>
+              <button className="btn" onClick={()=> setGrid(2)}>2</button>
+              <button className="btn" onClick={()=> setGrid(3)}>3</button>
+              <button className="btn" onClick={()=> setGrid(4)}>4</button>
+            </div>
+          </div>
         </div>
         <div className="w-60 absolute -left-10 z-0">
           <Lottie animationData={shape1} loop={true} />
@@ -69,7 +80,7 @@ const Queries = () => {
       </div>
       <div className="w-10/12 mx-auto my-10">
         <div>
-          <div className="grid grid-cols-2 gap-5">
+          <div className={`grid grid-cols-${grid} gap-5`}>
             {filteredQueries.map((query) => (
               <QueryCard key={query._id} query={query} />
             ))}
