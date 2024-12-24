@@ -61,7 +61,7 @@ const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
     });
   };
   return (
-    <div className="border border-gray-200 p-5 rounded-md grid grid-cols-4 gap-5">
+    <div className="border border-gray-200 p-5 rounded-md md:grid grid-cols-4 gap-5">
       <div className="flex col-span-1">
         <img src={productImageUrl} className="w-60 object-contain" />
       </div>
@@ -77,7 +77,7 @@ const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
         <p className="text-sm text-zinc-800">{reasonDetails}</p>
       </div>
       {location.pathname === myQueryRoute && (
-        <div className="flex gap-5 col-span-4">
+        <div className="flex md:flex-row flex-col gap-5 col-span-4">
           <Link to={`/query-details/${_id}`}>
             <button type="button" className="btn">
               View Details
@@ -96,7 +96,7 @@ const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
         </div>
       )}
       {location.pathname !== myQueryRoute && (
-        <div className="flex gap-5 col-span-4">
+        <div className="flex md:flex-row flex-col gap-5 col-span-4">
           <Link to={`/query-details/${_id}`}>
             <button type="button" className="btn">
               Recommend

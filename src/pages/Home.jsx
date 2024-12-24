@@ -16,7 +16,7 @@ const Home = () => {
         <h2 className="text-center font-semibold text-3xl text-zinc-950 mb-20">
           Recently Added Queries
         </h2>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-5">
           {
             queryCollection.map((query) => (
               <QueryCard key={query._id} query={query} queryCollection={queryCollection} setQueryCollection={setQueryCollection}/>
@@ -25,7 +25,7 @@ const Home = () => {
         </div>
       </div>
       {/* what we do */}
-      <div className="w-8/12 mx-auto my-20 bg-orange-200 border border-orange-300 rounded-3xl p-10 grid grid-cols-3 gap-5">
+      <div className="w-8/12 mx-auto my-20 bg-orange-200 border border-orange-300 rounded-3xl p-10 grid md:grid-cols-3 gap-5">
         <div className="col-span-2">
           <h2 className="font-semibold text-3xl">What We Do</h2>
           <p className="text-lg mt-5">
@@ -44,7 +44,7 @@ const Home = () => {
       {/* Articles */}
       <div className="w-10/12 mx-auto my-20">
         <h2 className="text-center font-semibold text-3xl text-zinc-950">Latest Articles</h2>
-        <div className="grid grid-cols-3 gap-5 mt-10">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 mt-10">
           <div className=" border border-black rounded-3xl p-5">
             <img
               src="https://cdn.prod.website-files.com/6009ec8cda7f305645c9d91b/66e213aee3cdb32f620c6a7f_DESIGN_BlogHeader01_blue_2400x1260-1.jpg"

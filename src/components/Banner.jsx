@@ -10,7 +10,7 @@ const Banner = () => {
         <div className="py-20 border-b border-gray-200">
         <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-4">
           <div className="col-span-2 flex flex-col justify-center">
-            <h1 className="font-bold text-6xl font-oswald text-zinc-950 mb-5">
+            <h1 className="font-bold lg:text-6xl text-3xl font-oswald text-zinc-950 mb-5">
               Ask for Recommendations
             </h1>
             <h3 className="font-semibold text-xl font-body text-zinc-950">

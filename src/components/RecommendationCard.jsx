@@ -53,9 +53,9 @@ const RecommendationCard = ({
     });
   };
   return (
-    <div className="p-5 border border-gray-200 rounded-md grid grid-cols-5 gap-3">
-      <div className="col-span-4">
-        <h2 className="text-lg font-bold mt-5">{recommendationTitle}</h2>
+    <div className="p-5 border border-gray-200 rounded-md grid md:grid-cols-5 gap-3">
+      <div className="md:col-span-4 ">
+        <h2 className="md:text-lg text-sm font-bold mt-5">{recommendationTitle}</h2>
         <p className="text-sm text-gray-700 font-semibold mt-2">
           Product: {recommendedProductName}
         </p>
@@ -67,7 +67,7 @@ const RecommendationCard = ({
           Recommendation Reason: {recommendationReason}
         </p>
       </div>
-      <div>
+      <div className=" ">
         <img src={recommendedProductImageUrl} className="w-60 object-contain" />
       </div>
       {location.pathname === myRecommendations && (

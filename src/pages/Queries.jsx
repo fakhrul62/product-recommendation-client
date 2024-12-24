@@ -33,7 +33,7 @@ const Queries = () => {
     <div>
       <div className="bg-zinc-100 py-32 relative overflow-hidden">
         <div className="relative z-10">
-          <h2 className="font-bold text-4xl text-zinc-900 text-center">
+          <h2 className="font-bold lg:text-4xl md:text-2xl text-xl text-zinc-900 text-center">
             Search Your Queries Here
           </h2>
           <p className="text-center mt-3">
@@ -80,7 +80,7 @@ const Queries = () => {
       </div>
       <div className="w-10/12 mx-auto my-10">
         <div>
-          <div className={`grid grid-cols-${grid} gap-5`}>
+          <div className={`grid md:grid-cols-${grid} gap-5`}>
             {filteredQueries.map((query) => (
               <QueryCard key={query._id} query={query} />
             ))}

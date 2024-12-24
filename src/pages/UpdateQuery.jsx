@@ -54,7 +54,7 @@ const UpdateQuery = () => {
     <div className="w-10/12 mx-auto my-10">
       <h2 className="text-center font-bold text-3xl mb-10">Update Query</h2>
       <form
-        className="grid grid-cols-2 gap-5 w-7/12 mx-auto"
+        className="grid grid-cols-2 gap-5 md:w-7/12 mx-auto"
         onSubmit={handleUpdateQuery}
       >
         <label className="form-control w-full">

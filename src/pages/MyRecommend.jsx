@@ -22,7 +22,7 @@ const MyRecommend = () => {
     <div>
       <div className="bg-zinc-100 py-32 relative overflow-hidden">
         <div className="relative z-10">
-          <h2 className="font-bold text-4xl text-zinc-900 text-center">
+          <h2 className="font-bold lg:text-4xl md:text-2xl text-xl text-zinc-900 text-center">
             All the Recommendations you made: {recommendations.length}
           </h2> 
         </div>
@@ -36,7 +36,7 @@ const MyRecommend = () => {
           <Lottie animationData={shape3} loop={true} />
         </div>
       </div>
-      <div className="my-10 grid grid-cols-2 gap-5 w-10/12 mx-auto">
+      <div className="my-10 grid md:grid-cols-2 gap-5 w-10/12 mx-auto">
         {
             recommendations.map(recommendation=><RecommendationCard key={recommendation._id} recommendation={recommendation} recommendations={recommendations} setRecommendations={setRecommendations}></RecommendationCard>)
         }
