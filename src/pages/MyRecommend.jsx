@@ -6,15 +6,18 @@ import shape2 from "../assets/shape-2.json";
 import shape3 from "../assets/shape-3.json";
 import { AuthContext } from "../Provider/AuthProvider";
 import RecommendationCard from "../components/RecommendationCard";
+import useAxios from "../hooks/useAxios";
 
 const MyRecommend = () => {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxios();
   const [recommendations, setRecommendations] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/recommendations?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setRecommendations(data));
+    axiosSecure.get(`http://localhost:5000/recommendations?email=${user.email}`)
+    .then(res=> setRecommendations(res.data))
   }, [user.email]);
+
+
   return (
     <div>
       <div className="bg-zinc-100 py-32 relative overflow-hidden">

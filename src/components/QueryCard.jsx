@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+
 
 const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
   const location = useLocation();
   const myQueryRoute = "/my-queries";
-  const queriesRoute = "/queries";
   const {
     _id,
     productName,
@@ -16,9 +16,18 @@ const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
     user_name,
     user_email,
     user_image,
-    dateTime,
-    recommendationCount,
+    dateTime
   } = query;
+  useEffect(()=>{
+    fetch("http://localhost:5000/recommendations")
+    .then(res=>res.json())
+    .then(data=>{
+      const newRecommendationCount = data.filter(recommendation=>recommendation.query_id===_id);
+      setNewRecommendationCount(newRecommendationCount.length);
+    })
+
+  }, [])
+  const [newRecommendationCount, setNewRecommendationCount] = useState(0);
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -86,7 +95,7 @@ const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
           </Link>
         </div>
       )}
-      {location.pathname === queriesRoute && (
+      {location.pathname !== myQueryRoute && (
         <div className="flex gap-5 col-span-4">
           <Link to={`/query-details/${_id}`}>
             <button type="button" className="btn">
@@ -94,7 +103,7 @@ const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
             </button>
           </Link>
           <button type="button" className="btn">
-            {recommendationCount} Recommendations
+            {newRecommendationCount} Recommendations
           </button>
         </div>
       )}

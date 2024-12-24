@@ -6,16 +6,16 @@ import shape2 from "../assets/shape-2.json";
 import shape3 from "../assets/shape-3.json";
 import { AuthContext } from "../Provider/AuthProvider";
 import QueryCard from "../components/QueryCard";
+import useAxios from "../hooks/useAxios";
 
 const MyQueries = () => {
   const { user } = useContext(AuthContext);
   const [queries, setQueries] = useState([]);
+  const axiosSecure = useAxios();
   useEffect(() => {
-    fetch(
-      `http://localhost:5000/queries?email=${user.email}`
-    )
-      .then((res) => res.json())
-      .then((data) => setQueries(data));
+    axiosSecure
+      .get(`http://localhost:5000/queries?email=${user.email}`)
+      .then((res) => setQueries(res.data));
   }, [user.email]);
 
   return (
@@ -52,17 +52,17 @@ const MyQueries = () => {
       </div>
       <div className="w-10/12 mx-auto my-10">
         <div>
-        <div className="grid grid-cols-2 gap-5">
-          { queries.length>0 ? (
-            queries.map((query) => (
-              <QueryCard key={query._id} query={query} />
-              
-            )))
-            : (
-              <p className="text-center text-2xl text-black">No queries found</p>
-            )
-          }
-        </div>
+          <div className="grid grid-cols-2 gap-5">
+            {queries.length > 0 ? (
+              queries.map((query) => (
+                <QueryCard key={query._id} query={query} queryCollection={queries} setQueryCollection={setQueries} />
+              ))
+            ) : (
+              <p className="text-center text-2xl text-black">
+                No queries found
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>

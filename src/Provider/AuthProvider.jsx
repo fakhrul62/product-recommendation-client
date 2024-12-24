@@ -8,6 +8,8 @@ import {
   signOut,
 } from "firebase/auth";
 import auth from "../utilities/firebase.config";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
@@ -38,6 +40,22 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       //console.log("Observing Current user: ", currentUser);
+      const user = { email: currentUser?.email };
+      if (currentUser?.email) {
+        axios
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then((res) => {
+            console.log("login token", res.data);
+            setLoading(false);
+          });
+      } else {
+        axios
+          .post("http://localhost:5000/jwt/logout", {}, { withCredentials: true })
+          .then((res) => {
+            console.log("logout", res.data);
+            setLoading(false);
+          });
+      }
       setLoading(false);
     });
     return () => {

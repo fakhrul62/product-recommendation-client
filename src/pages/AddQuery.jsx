@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import useAxios from "../hooks/useAxios";
 
 const AddQuery = () => {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxios();
   const handleAddQuery = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -47,6 +49,18 @@ const AddQuery = () => {
           });
         }
       });
+     /* 
+     axiosSecure
+    .post("http://localhost:5000/queries", newQuery).then((res) => {
+      console.log(res.data);
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: "Query Added!",
+          icon: "success",
+        });
+      }
+    });
+     */
     //form.reset();
   };
   return (
