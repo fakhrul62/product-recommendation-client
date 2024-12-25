@@ -22,8 +22,11 @@ const MyRecommend = () => {
     <div>
       <div className="bg-zinc-100 py-32 relative overflow-hidden">
         <div className="relative z-10">
-          <h2 className="font-bold lg:text-4xl md:text-2xl text-xl text-zinc-900 text-center">
-            All the Recommendations you made: {recommendations.length}
+          <h2 className="font-bold lg:text-4xl md:text-2xl text-xl text-zinc-900 text-center font-head">
+            All the Recommendations you made
+          </h2> 
+          <h2 className="font-semibold lg:text-xl md:text-lg text-base text-zinc-800 mt-10 text-center font-head">
+            You made <span className="text-orange-600">{recommendations.length}</span> recommendations so far.
           </h2> 
         </div>
         <div className="w-60 absolute -left-10 z-0">

@@ -42,7 +42,7 @@ const RecommendForMe = () => {
     <div>
       <div className="bg-zinc-100 py-32 relative overflow-hidden">
         <div className="relative z-10">
-          <h2 className="font-bold lg:text-4xl md:text-2xl text-xl text-zinc-900 text-center">
+          <h2 className="font-bold lg:text-4xl md:text-2xl text-xl text-zinc-900 text-center font-head">
             Recommendations for me
           </h2>
         </div>
@@ -60,7 +60,7 @@ const RecommendForMe = () => {
         {myRecom ? 
             (myRecom.map(recommendation=><RecommendationCard key={recommendation._id} recommendation={recommendation} recommendations={myRecom} setMyRecom={setRecommendations}></RecommendationCard>)) :
         (
-            <p className="text-center text-2xl text-black col-span-2">No Recommendations for you yet</p>
+            <p className="text-center text-2xl text-black col-span-2 font-head">No Recommendations for you yet</p>
         )
         }
       </div>

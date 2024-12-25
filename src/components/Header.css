@@ -1,0 +1,9 @@
+.menu a{
+    
+}
+.menu a:hover{
+    
+}
+.menu a.active{
+    font-weight: 600;
+}

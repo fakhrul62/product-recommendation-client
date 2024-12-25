@@ -5,6 +5,7 @@ import shape1 from "../assets/shape-1.json";
 import shape2 from "../assets/shape-2.json";
 import shape3 from "../assets/shape-3.json";
 import QueryCard from "../components/QueryCard";
+import { FiGrid } from "react-icons/fi";
 
 const Queries = () => {
   const [queries, setQueries] = useState([]);
@@ -33,10 +34,10 @@ const Queries = () => {
     <div>
       <div className="bg-zinc-100 py-32 relative overflow-hidden">
         <div className="relative z-10">
-          <h2 className="font-bold lg:text-4xl md:text-2xl text-xl text-zinc-900 text-center">
+          <h2 className="font-bold lg:text-4xl md:text-2xl text-xl text-zinc-900 text-center font-head">
             Search Your Queries Here
           </h2>
-          <p className="text-center mt-3">
+          <p className="text-center mt-3 font-head">
             Keep track of all the queries you have made. You can add your
             queries and see the responses you have received.
           </p>
@@ -46,25 +47,25 @@ const Queries = () => {
               placeholder="Search queries..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="px-4 py-2 border rounded w-1/2"
+              className="px-10 py-2 border rounded-full w-1/2 focus:border-orange-500 focus:ring-orange-500 h-[50px] font-head"
             />
           </div>
           <div className="text-center mt-8 gap-5 flex justify-center">
             <Link to="/add-query">
               <button
                 type="button"
-                className="btn px-20 bg-zinc-900 text-white border hover:border-zinc-900 border-zinc-900 hover:text-zinc-900"
+                className="btn px-24 rounded-full font-head bg-zinc-900 text-white border hover:border-zinc-900 border-zinc-900 hover:text-zinc-900"
               >
                 Add Query
               </button>
             </Link>
           </div>
-          <div className="flex gap-5 justify-center items-center mt-5">
-            <h3>Change the Grid</h3>
-            <div>
-              <button className="btn" onClick={()=> setGrid(2)}>2</button>
-              <button className="btn" onClick={()=> setGrid(3)}>3</button>
-              <button className="btn" onClick={()=> setGrid(4)}>4</button>
+          <div className="flex gap-4 justify-center items-center mt-5">
+            <h3 className="flex items-center justify-center border border-orange-600 p-[15px] rounded-md text-orange-600"><FiGrid /></h3>
+            <div className="gap-4 flex">
+              <button className="btn py-3 px-5 border border-orange-400 rounded-md hover:bg-orange-600 hover:text-white font-head" onClick={()=> setGrid(1)}>1</button>
+              <button className="btn py-3 px-5 border border-orange-400 rounded-md hover:bg-orange-600 hover:text-white font-head" onClick={()=> setGrid(2)}>2</button>
+              <button className="btn py-3 px-5 border border-orange-400 rounded-md hover:bg-orange-600 hover:text-white font-head" onClick={()=> setGrid(3)}>3</button>
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ const RecommendationCard = ({
     recommendedProductImageUrl,
     recommendedProductName,
     recommendationTitle,
+    current_user_name
   } = recommendation;
   const location = useLocation();
   const myRecommendations = "/my-recommendations";
@@ -53,17 +54,17 @@ const RecommendationCard = ({
     });
   };
   return (
-    <div className="p-5 border border-gray-200 rounded-md grid md:grid-cols-5 gap-3">
+    <div className="border border-gray-300 hover:border-orange-300 shadow-lg hover:shadow duration-300 p-5 rounded-md grid md:grid-cols-5 gap-3">
       <div className="md:col-span-4 ">
-        <h2 className="md:text-lg text-sm font-bold mt-5">{recommendationTitle}</h2>
-        <p className="text-sm text-gray-700 font-semibold mt-2">
+        <h2 className="md:text-xl text-zinc-900 text-sm font-bold mt-5 font-body">{recommendationTitle}</h2>
+        <p className="text-sm text-zinc-900 font-semibold mt-2 font-body">
           Product: {recommendedProductName}
         </p>
-        <p className="text-sm text-gray-700 font-semibold">
-          Company: {query_creator_name}
+        <p className="text-sm text-zinc-800 font-semibold font-body">
+          Made by: {current_user_name}
         </p>
-        <p className="text-sm text-gray-600 mb-2">Posted on: {dateTime}</p>
-        <p className="text-sm text-zinc-800">
+        <p className="text-sm text-gray-600 mb-2 font-body">Posted on: {dateTime}</p>
+        <p className="text-sm text-zinc-800 font-body">
           Recommendation Reason: {recommendationReason}
         </p>
       </div>
@@ -74,7 +75,7 @@ const RecommendationCard = ({
         <button
           onClick={() => handleDelete(_id)}
           type="button"
-          className="btn bg-zinc-900 border border-zinc-900 text-white hover:bg-red-300 hover:border-red-600 hover:text-red-700"
+          className="btn bg-zinc-900 border border-zinc-900 text-white hover:bg-red-300 hover:border-red-600 hover:text-red-700  font-body uppercase"
         >
           Delete
         </button>

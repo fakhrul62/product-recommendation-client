@@ -45,56 +45,58 @@ const QueryDetails = () => {
       query_id: _id,
     };
     // Send data to the server
-    fetch("https://product-recommendation-system-server-pied.vercel.app/recommendations", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newRecommendation),
-    })
+    fetch(
+      "https://product-recommendation-system-server-pied.vercel.app/recommendations",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newRecommendation),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
           // Increment recommendationCount for the new query
-          fetch(`https://product-recommendation-system-server-pied.vercel.app/queries/${_id}`, {
-            method: "PATCH",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify({ increment: 1 }), // Increment by 1
-          })
+          fetch(
+            `https://product-recommendation-system-server-pied.vercel.app/queries/${_id}`,
+            {
+              method: "PATCH",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({ increment: 1 }), // Increment by 1
+            }
+          )
             .then((res) => res.json())
-            .then((updateData) => {
-              if (
-                updateData.message ===
-                "Recommendation count incremented successfully"
-              ) {
-                Swal.fire({
-                  title: "Awesome!",
-                  text: "You recommended this Product!",
-                  icon: "success",
-                });
-              }
+            .then((data) => {
+              console.log(data);
+              Swal.fire({
+                title: "Awesome!",
+                text: "You recommended this Product!",
+                icon: "success",
+              });
             })
             .catch((error) =>
               console.error("Error incrementing recommendation count:", error)
             );
         }
       });
-    
-    
 
     // form.reset();
   };
 
-  useEffect(()=>{
-    fetch("https://product-recommendation-system-server-pied.vercel.app/recommendations")
-    .then((res) => res.json())
-    .then((data) => {
-      const resultData = data.filter(results=>results.query_id === _id);
-      setQueryRecommendations(resultData);
-    })
-  }, [])
+  useEffect(() => {
+    fetch(
+      "https://product-recommendation-system-server-pied.vercel.app/recommendations"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const resultData = data.filter((results) => results.query_id === _id);
+        setQueryRecommendations(resultData);
+      });
+  }, []);
 
   return (
     <div className="w-10/12 mx-auto my-5 grid grid-cols-2 gap-10">
@@ -234,13 +236,21 @@ const QueryDetails = () => {
           All Recommendations for this Query
         </h2>
         <div className="my-10 grid grid-cols-2 gap-5 w-10/12 mx-auto">
-        { queryRecommendations.length > 0 ? (
-            queryRecommendations.map(recommendation=><RecommendationCard key={recommendation._id} recommendation={recommendation} recommendations={queryRecommendations} setRecommendations={setQueryRecommendations}></RecommendationCard>)) :
-            (
-              <p className="text-center text-2xl text-black col-span-2">No Recommendations for this query yet</p>
-            )
-        }
-      </div>
+          {queryRecommendations.length > 0 ? (
+            queryRecommendations.map((recommendation) => (
+              <RecommendationCard
+                key={recommendation._id}
+                recommendation={recommendation}
+                recommendations={queryRecommendations}
+                setRecommendations={setQueryRecommendations}
+              ></RecommendationCard>
+            ))
+          ) : (
+            <p className="text-center text-2xl text-black col-span-2">
+              No Recommendations for this query yet
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -22,10 +22,10 @@ const MyQueries = () => {
     <div>
       <div className="bg-zinc-100 py-32 relative overflow-hidden">
         <div className="relative z-10">
-          <h2 className="font-bold lg:text-4xl md:text-2xl text-xl text-zinc-900 text-center">
+          <h2 className="font-bold lg:text-4xl md:text-2xl text-xl text-zinc-900 text-center font-head">
             Find All Your Queries Here
           </h2>
-          <p className="text-center mt-3">
+          <p className="text-center mt-3 font-head">
             Keep track of all the queries you have made. You can view the status
             of your queries and the responses you have received.
           </p>
@@ -33,7 +33,7 @@ const MyQueries = () => {
             <Link to="/add-query">
               <button
                 type="button"
-                className="btn px-20 bg-zinc-900 text-white border hover:border-zinc-900 border-zinc-900 hover:text-zinc-900"
+                className="btn px-20 bg-zinc-900 text-white border hover:border-zinc-900 border-zinc-900 hover:text-zinc-900 rounded-full font-head"
               >
                 Add Query
               </button>
@@ -58,7 +58,7 @@ const MyQueries = () => {
                 <QueryCard key={query._id} query={query} queryCollection={queries} setQueryCollection={setQueries} />
               ))
             ) : (
-              <p className="text-center text-2xl text-black">
+              <p className="text-center text-2xl text-black font-body">
                 No queries found
               </p>
             )}

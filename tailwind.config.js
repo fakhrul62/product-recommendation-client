@@ -9,7 +9,11 @@ export default {
     extend: {
       animation: {
         'spin-slow': 'spin 9s linear infinite',
-      }
+      },
+      fontFamily: {
+        'head': ['Outfit, serif'],
+        'body': ['Abel, serif'],
+      },
     },
   },
   daisyui: {
