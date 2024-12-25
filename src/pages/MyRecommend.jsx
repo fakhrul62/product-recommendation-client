@@ -13,7 +13,7 @@ const MyRecommend = () => {
   const axiosSecure = useAxios();
   const [recommendations, setRecommendations] = useState([]);
   useEffect(() => {
-    axiosSecure.get(`http://localhost:5000/recommendations?email=${user.email}`)
+    axiosSecure.get(`https://product-recommendation-system-server-pied.vercel.app/recommendations?email=${user.email}`)
     .then(res=> setRecommendations(res.data))
   }, [user.email]);
 

@@ -19,7 +19,7 @@ const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
     dateTime
   } = query;
   useEffect(()=>{
-    fetch("http://localhost:5000/recommendations")
+    fetch("https://product-recommendation-system-server-pied.vercel.app/recommendations")
     .then(res=>res.json())
     .then(data=>{
       const newRecommendationCount = data.filter(recommendation=>recommendation.query_id===_id);
@@ -39,7 +39,7 @@ const QueryCard = ({ query, queryCollection, setQueryCollection }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/queries/${id}`, {
+        fetch(`https://product-recommendation-system-server-pied.vercel.app/queries/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

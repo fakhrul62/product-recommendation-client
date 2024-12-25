@@ -32,7 +32,7 @@ const AddQuery = () => {
 
     console.log(newQuery);
     //send data to the server
-    fetch("http://localhost:5000/queries", {
+    fetch("https://product-recommendation-system-server-pied.vercel.app/queries", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -51,7 +51,7 @@ const AddQuery = () => {
       });
      /* 
      axiosSecure
-    .post("http://localhost:5000/queries", newQuery).then((res) => {
+    .post("https://product-recommendation-system-server-pied.vercel.app/queries", newQuery).then((res) => {
       console.log(res.data);
       if (res.data.insertedId) {
         Swal.fire({

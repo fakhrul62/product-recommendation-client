@@ -12,7 +12,7 @@ const Queries = () => {
   const [filteredQueries, setFilteredQueries] = useState([]);
   const [grid, setGrid] = useState(2);
   useEffect(() => {
-    fetch(`http://localhost:5000/queries`)
+    fetch(`https://product-recommendation-system-server-pied.vercel.app/queries`)
       .then((res) => res.json())
       .then((data) => {
         setQueries(data);

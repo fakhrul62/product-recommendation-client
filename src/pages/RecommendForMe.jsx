@@ -17,11 +17,11 @@ const RecommendForMe = () => {
   // Fetch data with useEffect
   useEffect(() => {
     axiosSecure
-      .get(`http://localhost:5000/queries?email=${user.email}`)
+      .get(`https://product-recommendation-system-server-pied.vercel.app/queries?email=${user.email}`)
       .then((res) => setMtQueries(res.data));
 
     axiosSecure
-      .get(`http://localhost:5000/recommendations?excludeEmail=${user.email}`)
+      .get(`https://product-recommendation-system-server-pied.vercel.app/recommendations?excludeEmail=${user.email}`)
       .then((res) => setRecommendations(res.data));
   }, [user.email]);
 

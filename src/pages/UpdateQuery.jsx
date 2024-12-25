@@ -31,7 +31,7 @@ const UpdateQuery = () => {
 
     console.log(updatedQuery);
     //send data to the server
-    fetch(`http://localhost:5000/queries/${_id}`, {
+    fetch(`https://product-recommendation-system-server-pied.vercel.app/queries/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -43,7 +43,7 @@ const Register = () => {
           // Step 2: Save Updated User to MongoDB
           const newUser = { name, email, photoURL, password };
           const response = await fetch(
-            "http://localhost:5000/users",
+            "https://product-recommendation-system-server-pied.vercel.app/users",
             {
               method: "POST",
               headers: {

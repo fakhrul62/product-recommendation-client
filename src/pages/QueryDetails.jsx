@@ -45,7 +45,7 @@ const QueryDetails = () => {
       query_id: _id,
     };
     // Send data to the server
-    fetch("http://localhost:5000/recommendations", {
+    fetch("https://product-recommendation-system-server-pied.vercel.app/recommendations", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -56,7 +56,7 @@ const QueryDetails = () => {
       .then((data) => {
         if (data.insertedId) {
           // Increment recommendationCount for the new query
-          fetch(`http://localhost:5000/queries/${_id}`, {
+          fetch(`https://product-recommendation-system-server-pied.vercel.app/queries/${_id}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
@@ -88,7 +88,7 @@ const QueryDetails = () => {
   };
 
   useEffect(()=>{
-    fetch("http://localhost:5000/recommendations")
+    fetch("https://product-recommendation-system-server-pied.vercel.app/recommendations")
     .then((res) => res.json())
     .then((data) => {
       const resultData = data.filter(results=>results.query_id === _id);
