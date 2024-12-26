@@ -92,7 +92,7 @@ const Register = () => {
   return (
     <div>
       <div className="w-6/12 mx-auto">
-        <h2 className="text-center font-bold text-4xl my-5 font-logo">
+        <h2 className="text-center font-black text-4xl my-5 font-body">
           Sign Up now!
         </h2>
         <div className="mt-5 mb-20">
@@ -146,14 +146,14 @@ const Register = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn  bg-white text-black hover:bg-mongo border-black">
+              <button className="btn  bg-orange-500 hover:bg-zinc-300 border border-zinc-300 hover:border-zinc-400 text-white hover:text-black duration-300 font-body">
                 Sign Up
               </button>
             </div>
           </form>
           <h3 className="font-body text-center text-xl">
             Already have an account?{" "}
-            <Link to="/login" className="text-mongo">
+            <Link to="/login" className="text-orange-500 font-bold">
               Log in Now
             </Link>
           </h3>

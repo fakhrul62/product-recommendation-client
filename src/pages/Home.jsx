@@ -5,7 +5,7 @@ import thumb from "../assets/thumb.json";
 import { useLoaderData } from "react-router-dom";
 import QueryCard from "../components/QueryCard";
 
-const Home = () => {
+const Home = ({}) => {
   const queries = useLoaderData();
   const [queryCollection, setQueryCollection] = useState(queries);
   return (

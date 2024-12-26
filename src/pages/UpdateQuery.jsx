@@ -52,9 +52,9 @@ const UpdateQuery = () => {
   };
   return (
     <div className="w-10/12 mx-auto my-10">
-      <h2 className="text-center font-bold text-3xl mb-10">Update Query</h2>
+      <h2 className="text-center font-bold text-3xl mb-10 font-body">Update Query</h2>
       <form
-        className="grid grid-cols-2 gap-5 md:w-7/12 mx-auto"
+        className="grid grid-cols-2 gap-5 md:w-7/12 mx-auto font-body"
         onSubmit={handleUpdateQuery}
       >
         <label className="form-control w-full">
@@ -119,9 +119,9 @@ const UpdateQuery = () => {
         <div className="col-span-2">
           <button
             type="submit"
-            className="btn w-full bg-zinc-900 text-white py-3 rounded-md hover:bg-zinc-200 hover:text-black hover:border"
+            className="btn w-full bg-orange-500 hover:bg-zinc-300 border border-zinc-300 hover:border-zinc-400 text-white hover:text-black duration-300 font-body"
           >
-            Add Query
+            Update Query
           </button>
         </div>
       </form>

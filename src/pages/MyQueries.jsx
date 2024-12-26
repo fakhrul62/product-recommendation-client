@@ -14,7 +14,7 @@ const MyQueries = () => {
   const axiosSecure = useAxios();
   useEffect(() => {
     axiosSecure
-      .get(`https://product-recommendation-system-server-pied.vercel.app/queries?email=${user.email}`)
+      .get(`https://product-recommendation-system-server-pied.vercel.app/queries-email?email=${user.email}`)
       .then((res) => setQueries(res.data));
   }, [user.email]);
 

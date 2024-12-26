@@ -17,7 +17,7 @@ const RecommendForMe = () => {
   // Fetch data with useEffect
   useEffect(() => {
     axiosSecure
-      .get(`https://product-recommendation-system-server-pied.vercel.app/queries?email=${user.email}`)
+      .get(`https://product-recommendation-system-server-pied.vercel.app/queries-email?email=${user.email}`)
       .then((res) => setMtQueries(res.data));
 
     axiosSecure
@@ -35,8 +35,6 @@ const RecommendForMe = () => {
     }
   }, [recommendations, myQueries]);
 
-  console.log(myRecom);
-  console.log("otherQueries", myQueries);
 
   return (
     <div>

@@ -6,18 +6,26 @@ import shape2 from "../assets/shape-2.json";
 import shape3 from "../assets/shape-3.json";
 import QueryCard from "../components/QueryCard";
 import { FiGrid } from "react-icons/fi";
+import useAxios from "../hooks/useAxios";
 
 const Queries = () => {
   const [queries, setQueries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredQueries, setFilteredQueries] = useState([]);
   const [grid, setGrid] = useState(2);
+  const axiosSecure = useAxios();
   useEffect(() => {
-    fetch(`https://product-recommendation-system-server-pied.vercel.app/queries`)
-      .then((res) => res.json())
-      .then((data) => {
-        setQueries(data);
-        setFilteredQueries(data);
+    // fetch(`https://product-recommendation-system-server-pied.vercel.app/queries`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setQueries(data);
+    //     setFilteredQueries(data);
+    //   });
+    axiosSecure
+      .get(`https://product-recommendation-system-server-pied.vercel.app/queries`)
+      .then((res) => {
+        setQueries(res.data);
+        setFilteredQueries(res.data);
       });
   }, []);
   // Update filtered queries when searchTerm changes
